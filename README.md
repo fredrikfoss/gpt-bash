@@ -52,7 +52,7 @@ Payload:
 ## Install
 
 ```sh
-git clone git@github.com:fredfoss/gpt-bash.git
+git clone git@github.com:fredrikfoss/gpt-bash.git
 cd gpt-bash
 make install
 ```
