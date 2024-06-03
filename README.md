@@ -84,7 +84,7 @@ usage:
 options:
     -q <query>    add additional query to payload
     -f <file>     add file as additional query
-    -i <image>    add PNG image file to payload
+    -i <image>    add PNG or JPEG image file to payload
     -p            add screenshot to payload
     -d            dry-run mode, don't call API
     -h            print help
@@ -114,7 +114,6 @@ gpt can the project structure be improved? <<<$(tree -aI .git)
 * System prompt option: gpt -s new system prompt
 * Temperature option: gpt -t 0.5
 * Ignore all options after --
-* Support other image formats beside png
 * Remember conversation (maybe)
 * macOS patch
 * Linux X11 patch

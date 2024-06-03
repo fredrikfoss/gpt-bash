@@ -82,20 +82,29 @@ cmd_add_file() {
 }
 
 cmd_add_image() {
-	local content_file
+	local content_file image_format
 	content_file=$(mktemp "$TMPDIR/content.XXXXXX.b64")
 	base64 -w 0 "$1" >"$content_file" || die "error: failed to encode image"
-	jq -c --rawfile content "$content_file" \
-		'(.messages[] | select(.role == "user").content) += [{"type": "image_url", "image_url": {"url": ("data:image/png;base64," + $content)}}]' \
-		"$TMPDIR/payload" >"$TMPDIR/payload_temp" && mv "$TMPDIR/payload_temp" "$TMPDIR/payload"
+	image_format=$(file --mime-type -b "$1")
+	if [[ $image_format == image/jpeg ]]; then
+		jq -c --rawfile content "$content_file" \
+			'(.messages[] | select(.role == "user").content) += [{"type": "image_url", "image_url": {"url": ("data:image/jpeg;base64," + $content)}}]' \
+			"$TMPDIR/payload" >"$TMPDIR/payload_temp" && mv "$TMPDIR/payload_temp" "$TMPDIR/payload"
+	elif [[ $image_format == image/png ]]; then
+		jq -c --rawfile content "$content_file" \
+			'(.messages[] | select(.role == "user").content) += [{"type": "image_url", "image_url": {"url": ("data:image/png;base64," + $content)}}]' \
+			"$TMPDIR/payload" >"$TMPDIR/payload_temp" && mv "$TMPDIR/payload_temp" "$TMPDIR/payload"
+	else
+		die "error: image format not supported"
+	fi
 }
 
 cmd_add_screenshot() {
 	local content_file
 	content_file=$(mktemp "$TMPDIR/content.XXXXXX.b64")
-	grim -g "$(slurp)" - | base64 -w 0 >"$content_file" || die "error: failed to capture screenshot"
+	grim -t jpeg -g "$(slurp)" - | base64 -w 0 >"$content_file" || die "error: failed to capture screenshot"
 	jq -c --rawfile content "$content_file" \
-		'(.messages[] | select(.role == "user").content) += [{"type": "image_url", "image_url": {"url": ("data:image/png;base64," + $content)}}]' \
+		'(.messages[] | select(.role == "user").content) += [{"type": "image_url", "image_url": {"url": ("data:image/jpeg;base64," + $content)}}]' \
 		"$TMPDIR/payload" >"$TMPDIR/payload_temp" && mv "$TMPDIR/payload_temp" "$TMPDIR/payload"
 }
 
@@ -118,7 +127,7 @@ cmd_usage() {
 		options:
 		    -q <query>    add additional query to payload
 		    -f <file>     add file as additional query
-		    -i <image>    add PNG image file to payload
+		    -i <image>    add PNG or JPEG image file to payload
 		    -p            add screenshot to payload
 		    -d            dry-run mode, don't call API
 		    -h            print help
