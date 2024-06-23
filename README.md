@@ -66,7 +66,7 @@ export PATH=$HOME/.local/bin:$PATH
 Then, set the OPENAI_API_KEY environment variable with your API key. Example, in `~/.bashrc`:
 
 ```sh
-export OPENAI_API_KEY=sk-exa****XLJENBTnu
+export OPENAI_API_KEY=sk-exa...XLJENBTnu
 ```
 
 If you don't want to make it an environment variable, you could instead store the key in [pass](https://passwordstore.org). Add the key to pass, then in `~/.bashrc` something like:
@@ -111,9 +111,9 @@ gpt can the project structure be improved? <<<$(tree -aI .git)
 
 ## TODO
 
+* Ignore all options after --
 * System prompt option: gpt -s new system prompt
 * Temperature option: gpt -t 0.5
-* Ignore all options after --
 * Remember conversation (maybe)
 * macOS patch
 * Linux X11 patch
