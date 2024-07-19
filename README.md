@@ -115,6 +115,3 @@ gpt can the project structure be improved? <<<$(tree -aI .git)
 * System prompt option: gpt -s new system prompt
 * Temperature option: gpt -t 0.5
 * Remember conversation (maybe)
-* macOS patch
-* Linux X11 patch
-* Makefile patching functionality
