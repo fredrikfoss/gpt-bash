@@ -54,10 +54,10 @@ Payload:
 ```sh
 git clone git@github.com:fredrikfoss/gpt-bash.git
 cd gpt-bash
-make install
+make
 ```
 
-The program executable will be copied to `~/.local/bin/gpt`. Remember to add directory to path. Example, in `~/.bashrc`:
+you can link or copy the program executable to `~/.local/bin/gpt` with `make link` or `make install`. Remember to add directory to path. Example, in `~/.bashrc`:
 
 ```sh
 export PATH=$HOME/.local/bin:$PATH
@@ -82,12 +82,12 @@ usage:
     gpt [options] [query]
 
 options:
-    -q <query>    add additional query to payload
-    -f <file>     add file as additional query
-    -i <image>    add PNG or JPEG image file to payload
-    -p            add screenshot to payload
-    -d            dry-run mode, don't call API
-    -h            print help
+    -q <query> # add additional query to payload
+    -f <file>  # add file as additional query
+    -i <image> # add PNG or JPEG image file to payload
+    -p         # add screenshot to payload
+    -d         # dry-run mode, don't call API
+    -h         # print help
 ```
 
 ### Examples
