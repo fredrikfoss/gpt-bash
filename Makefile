@@ -9,9 +9,9 @@ help:
 		"    make [option]" \
 		"" \
 		"options:" \
-		"    install   # copy to ~/.local/bin/" \
-		"    link      # link to ~/.local/bin/" \
-		"    help      # print help"
+		"    install # copy to ~/.local/bin" \
+		"    link    # link in ~/.local/bin" \
+		"    help    # print help"
 
 install:
 	@mkdir -p $(dir $(TARGET))
@@ -21,5 +21,6 @@ install:
 
 link:
 	@mkdir -p $(dir $(TARGET))
+	@rm -f $(TARGET)
 	@ln -sfr $(SOURCE) $(TARGET)
-	@printf "linked to $(TARGET)\n"
+	@printf "linked in $(TARGET)\n"
