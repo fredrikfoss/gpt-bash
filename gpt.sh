@@ -125,12 +125,12 @@ cmd_usage() {
 		    ${0##*/} [options] [query]
 
 		options:
-		    -q <query>    add additional query to payload
-		    -f <file>     add file as additional query
-		    -i <image>    add PNG or JPEG image file to payload
-		    -p            add screenshot to payload
-		    -d            dry-run mode, don't call API
-		    -h            print help
+		    -q <query> # add additional query to payload
+		    -f <file>  # add file as additional query
+		    -i <image> # add PNG or JPEG image file to payload
+		    -p         # add screenshot to payload
+		    -d         # dry-run mode, don't call API
+		    -h         # print help
 	EOF
 }
 
