@@ -55,7 +55,7 @@ init_payload() {
 
 fetch_response() {
 	local chunk
-	(curl --fail -s -X POST "$ENDPOINT" \
+	(curl -fsNX POST "$ENDPOINT" \
 		-H "Authorization: Bearer $API_KEY" \
 		-H "Content-Type: application/json" \
 		--data-binary "@$TMPDIR/payload" |

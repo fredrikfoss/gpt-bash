@@ -57,7 +57,7 @@ cd gpt-bash
 make
 ```
 
-you can link or copy the program executable to `~/.local/bin/gpt` with `make link` or `make install`. Remember to add directory to path. Example, in `~/.bashrc`:
+You can link or copy the program executable to `~/.local/bin/gpt` with `make link` or `make install`. Remember to add directory to path. Example, in `~/.bashrc`:
 
 ```sh
 export PATH=$HOME/.local/bin:$PATH
