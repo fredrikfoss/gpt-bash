@@ -1,4 +1,4 @@
-SOURCE := gpt.sh
+SOURCE := gpt
 TARGET := $(HOME)/.local/bin/gpt
 
 .PHONY: help install link
