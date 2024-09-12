@@ -2,7 +2,7 @@
 
 OpenAI API client in Bash. Based on the baseless assumption that separating queries in the API call can enhance the AI's ability to distinguish inputs, the application allows appending text queries, files, images, screenshots, and stdin as distinct message modules to the payload. Perform a dry run to inspect the payload as demonstrated in the example below.
 
-```console
+```
 $ gpt -d explain the following shell script -f script.sh
 Dry-run mode, no API calls made.
 
@@ -78,15 +78,14 @@ alias gpt='OPENAI_API_KEY=$(pass api-keys/openai) gpt'
 ## Usage
 
 ```
-usage:
-    gpt [options] [query]
+usage: gpt [options] [query]
 
 options:
-    -q <query> # add additional query to payload
-    -f <file>  # add file as additional query
-    -i <image> # add PNG or JPEG image file to payload
-    -p         # add screenshot to payload
-    -d         # dry-run mode, don't call API
+    -q <query> # add additional query
+    -f <file>  # add file
+    -i <image> # add image file
+    -p         # add screenshot
+    -d         # dry-run
     -h         # print help
 ```
 
